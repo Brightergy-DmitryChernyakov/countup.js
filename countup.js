@@ -172,7 +172,7 @@ function countUp(target, startVal, endVal, decimals, duration, options) {
     if (progress < self.duration) {
       self.rAF = requestAnimationFrame(self.count);
     } else {
-      if (self.callback !== null) { self.callback(); }
+      if (self.callback) { self.callback(); }
     }
   };
 
