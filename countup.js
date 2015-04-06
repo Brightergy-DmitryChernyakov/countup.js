@@ -80,8 +80,8 @@ function countUp(target, startVal, endVal, decimals, duration, options) {
   };
 
   if (this.options.separator === '') { this.options.useGrouping = false; }
-  if (this.options.prefix === null) { this.options.prefix = ''; }
-  if (this.options.suffix === null) { this.options.suffix = ''; }
+  if (!this.options.prefix) { this.options.prefix = ''; }
+  if (!this.options.suffix) { this.options.suffix = ''; }
   if (this.options.useCompress && !this.options.compressSuffix) {
     this.options.compressSuffix = ['k', 'm'];
   }
