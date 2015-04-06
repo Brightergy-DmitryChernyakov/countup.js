@@ -217,6 +217,7 @@ function countUp(target, startVal, endVal, decimals, duration, options) {
   };
 
   this.formatNumber = function(nStr) {
+
     if (this.options.useCompress) {
 
       var decompressed = decompressNumber(nStr);
@@ -240,7 +241,13 @@ function countUp(target, startVal, endVal, decimals, duration, options) {
   };
 
   this.shortNumber = function (input) {
-    var number = parseInt(input);
+    var number = parseFloat(input);
+    if (number < 1) {
+      number = number.toFixed(2);
+      return number;
+    }
+
+    number = parseInt(input);
     if (number >= 1000000000) {
       number = (number / 1000000).toFixed(0).toLocaleString() + this.options.compressSuffix[1];
     } else if (number >= 1000000) {
@@ -249,6 +256,8 @@ function countUp(target, startVal, endVal, decimals, duration, options) {
       number = (number / 1000).toFixed(0).toLocaleString() + this.options.compressSuffix[0];
     } else if (number >= 1000) {
       number = (number / 1000).toFixed(1).toLocaleString() + this.options.compressSuffix[0];
+    } else if (number < 1) {
+      number = number.toFixed(2);
     }
 
     return number;
